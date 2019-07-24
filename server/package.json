@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "make-migration": "knex migrate:make",
+    "run-migrations": "knex migrate:latest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
