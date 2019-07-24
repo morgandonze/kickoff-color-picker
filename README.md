@@ -31,7 +31,7 @@ This codebase contains an Express server and a React app. The scaffold is in pla
 
 Please take 2 hours to complete the exercise. If you choose to setup the app yourself instead of using the scaffold, take an extra 30min to get everything in place.
 
-There's a lot to do. Don't sweat the details and focus getting through as much as you can. Finishing everything isn't a requirement for success in the exercise. If you do finish early, take your pick of refactoring, styling, or adding features.
+There's a lot to do. Don't sweat the details. Just focus on getting through as much as you can. Finishing everything isn't a requirement for success in the exercise. If you do finish early, take your pick of refactoring, styling, or adding features.
 
 ## Setup
 
@@ -60,7 +60,7 @@ There's a lot to do. Don't sweat the details and focus getting through as much a
 
 ### To start client
 
-- cd server
+- cd client
 - npm install
 - npm run start
 - open [http://localhost:3000](http://localhost:3000)
