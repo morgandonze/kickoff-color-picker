@@ -5,7 +5,7 @@ import { SERVER_URL } from "../../constants";
 import ColorPicker from "../color-picker";
 import "./styles.scss";
 
-const ColorPalette = ({ palette: initialPalette }) => {
+const ColorPalette = ({ palette: initialPalette, onDelete }) => {
   const [palette, setPalette] = useState(initialPalette);
 
   const setColor = idx => color => {
@@ -19,8 +19,17 @@ const ColorPalette = ({ palette: initialPalette }) => {
     });
   };
 
+  const deletePalette = () => {
+    onDelete(palette.id);
+
+    axios.delete(`${SERVER_URL}/palettes/${palette.id}/destroy`);
+  };
+
   return (
     <div className="palette">
+      <form onSubmit={deletePalette}>
+        <button type="submit">Delete</button>
+      </form>
       {palette.colors.map((color, idx) => (
         <ColorPicker key={idx} color={color} onChange={setColor(idx)} />
       ))}

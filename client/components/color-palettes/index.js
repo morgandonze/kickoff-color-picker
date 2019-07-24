@@ -31,15 +31,27 @@ const ColorPalettes = () => {
     }
   };
 
+  const onDelete = paletteId => {
+    setPalettes(oldPalettes =>
+      oldPalettes.filter(({ id }) => id !== paletteId)
+    );
+  };
+
   return (
     <div className="container">
       <form className="form" onSubmit={createPalette}>
         <button type="submit">Create Palette</button>
       </form>
       <div className="palettes">
-        {palettes.reverse().map(palette => (
-          <ColorPalette key={palette.id} palette={palette} />
-        ))}
+        {palettes
+          .sort(({ id: a }, { id: b }) => b - a)
+          .map(palette => (
+            <ColorPalette
+              key={palette.id}
+              palette={palette}
+              onDelete={onDelete}
+            />
+          ))}
       </div>
     </div>
   );

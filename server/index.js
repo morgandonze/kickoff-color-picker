@@ -67,6 +67,14 @@ app.post("/palettes/create", async (_, res) => {
   res.send(JSON.stringify(palette));
 });
 
+app.delete("/palettes/:id/destroy", async (req, res) => {
+  const [id] = await knex("palettes")
+    .where({ id: req.params.id })
+    .delete();
+
+  res.send(JSON.stringify(id));
+});
+
 app.put("/colors/:id/update", async (req, res) => {
   const { r, g, b } = req.body;
   await knex("colors")
