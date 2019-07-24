@@ -49,18 +49,18 @@ There's a lot to do. Don't sweat the details and focus getting through as much a
 
 - cd server
 - npm install
-- npm run-migrations
-- npm start
+- npm run run-migrations
+- npm run start
 
 ### To add a database migration
 
-- npm create-migration -- {{migration_name}}
-- npm run-migrations
+- npm run create-migration -- {{migration_name}}
+- npm run run-migrations
 - note: you can drop the database and start over by deleting /server/database.sqlite
 
 ### To start client
 
 - cd server
 - npm install
-- npm start
+- npm run start
 - open [http://localhost:3000](http://localhost:3000)
