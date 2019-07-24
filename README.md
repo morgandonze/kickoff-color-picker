@@ -9,19 +9,19 @@ Build a simple web based color picker. The picker should:
 1. Take input for RGB values
 2. Display the current color
 
-### Phase 2 -- Swatches
+### Phase 2 -- Palettes
 
-Build a form to select a swatch of 5 colors.
+Build a form to select a palette of 5 colors.
 
 ### Phase 3 -- Persistence
 
-Persist swatches to the database.
+Persist palettes to the database.
 
-1. Add ability to save multiple swatches
-2. Don't worry about mutiple users. Saved swatches are global.
-3. Display all the persisted swatches in the UI.
-4. Enable deleting of swatches.
-5. Enable editing of swatches.
+1. Add ability to save multiple palettes
+2. Don't worry about mutiple users. Saved palettes are global.
+3. Display all the persisted palettes in the UI.
+4. Enable deleting of palettes.
+5. Enable editing of palettes.
 
 ## Details
 

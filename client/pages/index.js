@@ -1,8 +1,8 @@
-import Welcome from "../components/welcome";
+import ColorPalettes from "../components/color-palettes";
 import "./styles.scss";
 
 const Home = () => {
-  return <Welcome />;
+  return <ColorPalettes />;
 };
 
 export default Home;
