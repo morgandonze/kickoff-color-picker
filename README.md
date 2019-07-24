@@ -47,7 +47,13 @@ Please take 2 hours to complete the exercise. If you choose to setup the app you
 
 - cd server
 - npm install
+- npm run-migrations
 - npm start
+
+### To add a database migration
+
+- npm create-migration -- {{migration_name}}
+- npm run-migrations
 
 ### To start client
 

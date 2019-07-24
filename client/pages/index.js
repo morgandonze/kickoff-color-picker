@@ -1,8 +1,8 @@
-import Map from "../components/map";
+import Welcome from "../components/welcome";
 import "./styles.scss";
 
 const Home = () => {
-  return <Map />;
+  return <Welcome />;
 };
 
 export default Home;
