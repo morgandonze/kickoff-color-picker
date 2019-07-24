@@ -1,0 +1,114 @@
+$asparagus: #85ae4b;
+$avocado: #5c821a;
+$smoky-black: #0f1b07;
+$brown: #6d5932;
+$white: #ffffff;
+
+$grid-stroke: 2px;
+
+body {
+  overflow: hidden;
+}
+
+#container {
+  position: "relative";
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: $asparagus;
+
+  #map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+
+    .point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: $white;
+      transform: translate(-5px, -5px);
+    }
+
+    .route {
+      transform-origin: 0;
+      position: absolute;
+      height: 1px;
+      background-color: $white;
+    }
+
+    #x-axis,
+    #y-axis {
+      opacity: 0.8;
+    }
+
+    #x-axis {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: $grid-stroke;
+      background-color: $white;
+    }
+
+    #y-axis {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: $grid-stroke;
+      background-color: $white;
+      // transform: translateX(-1 * ($grid-stroke / 2));
+    }
+
+    .x-marker,
+    .y-marker {
+      position: absolute;
+
+      .x-marker-line,
+      .y-marker-line {
+        background-color: $white;
+      }
+
+      .x-marker-label,
+      .y-marker-label {
+        color: $white;
+      }
+    }
+
+    .x-marker {
+      .x-marker-line {
+        width: 2px;
+        height: 10px;
+      }
+
+      .x-marker-label {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .y-marker {
+      flex-direction: row;
+
+      .y-marker-line {
+        width: 10px;
+        height: 2px;
+      }
+
+      .y-marker-guide:hover {
+        opacity: 0.5;
+      }
+
+      .y-marker-label {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
