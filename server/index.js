@@ -18,5 +18,5 @@ app.get("/greeting", async (_, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Kudos Maps Server listening on port ${PORT}!`);
+  console.log(`Server listening on port ${PORT}`);
 });
