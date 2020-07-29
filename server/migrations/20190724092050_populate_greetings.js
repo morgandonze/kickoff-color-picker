@@ -1,7 +1,9 @@
-exports.up = function(knex) {
-  return knex("greetings").insert([{ body: "Welcome to Kudos Color Picker!" }]);
+exports.up = function (knex) {
+  return knex("greetings").insert([
+    { body: "Welcome to Kickoff Color Picker!" },
+  ]);
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex("greetings").delete();
 };
