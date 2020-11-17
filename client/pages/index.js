@@ -1,8 +1,8 @@
-import Welcome from "../components/welcome";
+import ColorPicker from "../components/color-picker";
 import "./styles.scss";
 
 const Home = () => {
-  return <Welcome />;
+  return <ColorPicker/>
 };
 
 export default Home;
