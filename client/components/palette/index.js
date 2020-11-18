@@ -6,7 +6,7 @@ const Palette = (props) => {
     width: swatchWidth,
     marginRight: 5,
     backgroundColor: color || "#bdbdbd",
-    border: isActive ? "2px solid black" : "1px solid #cbcbcb"
+    border: isActive ? "2px solid black" : "1px solid #cbcbcb",
   };
 
   return (

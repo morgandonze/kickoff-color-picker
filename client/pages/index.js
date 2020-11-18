@@ -16,9 +16,9 @@ const Home = () => {
       const { status, data } = await axios.get(`${SERVER_URL}/palette`);
 
       if (status === 200) {
-        const {palette} = data
-        const _colors = palette.split(",")
-        setColors(_colors)
+        const { palette } = data;
+        const _colors = palette.split(",");
+        setColors(_colors);
       }
     };
 
@@ -44,7 +44,7 @@ const Home = () => {
     });
   };
 
-  if (!colors) return null
+  if (!colors) return null;
 
   return (
     <div style={{ padding: 20 }}>
@@ -52,7 +52,13 @@ const Home = () => {
         onChangeColor={onChangeColor}
         color={colors[currentSwatch]}
       />
-      <div style={{ display: "flex", flexDirection: "row", marginBottom: 10 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginBottom: 10,
+        }}
+      >
         {colors.map((color, index) => {
           return (
             <Palette
