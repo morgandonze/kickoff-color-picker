@@ -17,6 +17,24 @@ app.get("/greeting", async (_, res) => {
   res.send(JSON.stringify(greeting));
 });
 
+app.get("/palette", async (_, res) => {
+  const [palette] = await knex("palettes").limit(1);
+  res.send(JSON.stringify(palette));
+});
+
+app.put("/palette", async (req, res) => {
+  try {
+    const { palette, id } = req.body;
+    await knex("palettes")
+      .where({ id: id })
+      .update({ palette: palette });
+
+    res.send(JSON.stringify(palette));
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
