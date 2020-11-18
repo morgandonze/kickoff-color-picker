@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
     return knex("palettes").insert([
-        {palette: "#ffffff, #000000, #cccccc"}
+        {palette: "ff6d42,bada55,cccccc"}
     ])
 };
 

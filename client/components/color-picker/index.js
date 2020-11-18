@@ -33,9 +33,9 @@ const ColorPicker = (props) => {
 
   if (!color) return null;
 
-  const redHex = color.slice(1, 3);
-  const greenHex = color.slice(3, 5);
-  const blueHex = color.slice(5, 7);
+  const redHex = color.slice(0,2);
+  const greenHex = color.slice(2,4);
+  const blueHex = color.slice(4,6);
 
   const channels = {
     red: redHex,
@@ -48,7 +48,7 @@ const ColorPicker = (props) => {
     const hex = parseInt(value).toString(16).padStart(2, "0");
     channels[name] = hex;
 
-    onChangeColor(`#${channels.red}${channels.green}${channels.blue}`);
+    onChangeColor(`${channels.red}${channels.green}${channels.blue}`);
   };
 
   return (
@@ -58,11 +58,11 @@ const ColorPicker = (props) => {
           style={{
             height: 100,
             width: 100,
-            backgroundColor: color,
+            backgroundColor: `#${color}`,
             border: "2px solid #cbcbcb",
           }}
         />
-        {color}
+        {`#${color}`}
       </div>
       <div>
         <ChannelSlider
