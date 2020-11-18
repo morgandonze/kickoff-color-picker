@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ColorPicker from "../components/color-picker";
 import Palette from "../components/palette";
+import { SERVER_URL } from "../constants";
+import axios from "axios";
 import "./styles.scss";
 
 const Home = () => {
@@ -12,16 +14,29 @@ const Home = () => {
     setSwatch(swatchNumber);
   };
 
-  const onChangeColor = (color) => {
-    const colorsDup = colors.slice()
-    colorsDup.splice(currentSwatch, 1, color)
-    setColors(colorsDup)
+  const onChangeColor = async (color) => {
+    const colorsDup = colors.slice();
+    colorsDup.splice(currentSwatch, 1, color);
+    setColors(colorsDup);
+  };
+
+  const saveColors = async () => {
+    const url = `${SERVER_URL}/palette`;
+    console.log(url);
+
+    // await axios.get("/palette")
+    await axios.post(url, {
+      palette: colors.join(","),
+    });
   };
 
   return (
     <div style={{ padding: 20 }}>
-      <ColorPicker onChangeColor={onChangeColor} color={colors[currentSwatch]} />
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <ColorPicker
+        onChangeColor={onChangeColor}
+        color={colors[currentSwatch]}
+      />
+      <div style={{ display: "flex", flexDirection: "row", marginBottom: 10 }}>
         {colors.map((color, index) => {
           return (
             <Palette
@@ -32,6 +47,10 @@ const Home = () => {
             />
           );
         })}
+      </div>
+
+      <div>
+        <button onClick={saveColors}>Save Palette</button>
       </div>
     </div>
   );
