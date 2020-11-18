@@ -22,10 +22,13 @@ app.get("/palette", async (_, res) => {
   res.send(JSON.stringify(palette));
 });
 
-app.post("/palette", async (req, res) => {
+app.put("/palette", async (req, res) => {
   try {
-    const palette = req.body.palette
-    await knex("palettes").insert([{ palette: palette }]);
+    const { palette, id } = req.body;
+    await knex("palettes")
+      .where({ id: id })
+      .update({ palette: palette });
+
     res.send(JSON.stringify(palette));
   } catch (e) {
     console.log(e);

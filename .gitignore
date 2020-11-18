@@ -2,3 +2,5 @@
 .DS_Store
 
 server/database.sqlite
+
+Kickoff.session.sql

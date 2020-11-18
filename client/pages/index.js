@@ -6,9 +6,24 @@ import axios from "axios";
 import "./styles.scss";
 
 const Home = () => {
-  const initColors = ["#ba189d", "#6effff", "#ffff72"];
+  const [colors, setColors] = useState(null);
   const [currentSwatch, setSwatch] = useState(0);
-  const [colors, setColors] = useState(initColors);
+
+  useEffect(() => {
+    const fetchPalette = async () => {
+      setColors(initColors)
+
+      const { status, data } = await axios.get(`${SERVER_URL}/palette`);
+
+      if (status === 200) {
+        const {palette} = data
+        const _colors = palette.split(",")
+        setColors(_colors)
+      }
+    };
+
+    fetchPalette();
+  }, [setColors, axios]);
 
   const onFocusSwatch = (swatchNumber) => () => {
     setSwatch(swatchNumber);
@@ -22,13 +37,14 @@ const Home = () => {
 
   const saveColors = async () => {
     const url = `${SERVER_URL}/palette`;
-    console.log(url);
 
-    // await axios.get("/palette")
-    await axios.post(url, {
+    await axios.put(url, {
+      id: 1,
       palette: colors.join(","),
     });
   };
+
+  if (!colors) return null
 
   return (
     <div style={{ padding: 20 }}>
