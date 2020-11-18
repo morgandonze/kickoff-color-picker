@@ -11,8 +11,6 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPalette = async () => {
-      setColors(initColors)
-
       const { status, data } = await axios.get(`${SERVER_URL}/palette`);
 
       if (status === 200) {
