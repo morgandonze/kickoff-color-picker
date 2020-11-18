@@ -28,20 +28,27 @@ const ChannelSlider = (props) => {
   );
 };
 
-const ColorPicker = () => {
+const ColorPicker = (props) => {
+  const { onChangeColor } = props;
+
   const [red, setRed] = useState(0);
   const [green, setGreen] = useState(0);
   const [blue, setBlue] = useState(0);
 
+  const currentHex = () => {
+    const redHex = red.toString(16).padStart(2, "0");
+    const greenHex = green.toString(16).padStart(2, "0");
+    const blueHex = blue.toString(16).padStart(2, "0");
+    const hexColor = `#${redHex}${greenHex}${blueHex}`;
+
+    return hexColor;
+  };
+
   const colorChangeHandler = (setter) => (event) => {
     const value = event.nativeEvent.target.value;
     setter(parseInt(value));
+    onChangeColor(currentHex())
   };
-
-  const redHex = red.toString(16).padStart(2, "0");
-  const greenHex = green.toString(16).padStart(2, "0");
-  const blueHex = blue.toString(16).padStart(2, "0");
-  const hexColor = `#${redHex}${greenHex}${blueHex}`;
 
   return (
     <div style={{ marginBottom: 10, display: "flex", flexDirection: "row" }}>
@@ -50,10 +57,10 @@ const ColorPicker = () => {
           style={{
             height: 100,
             width: 100,
-            backgroundColor: hexColor,
+            backgroundColor: currentHex(),
           }}
         />
-        {hexColor}
+        {currentHex()}
       </div>
       <div>
         <ChannelSlider
