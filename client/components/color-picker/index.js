@@ -29,24 +29,29 @@ const ChannelSlider = (props) => {
 };
 
 const ColorPicker = (props) => {
-  const { onChangeColor } = props;
+  const { onChangeColor, color } = props;
 
-  const [red, setRed] = useState(0);
-  const [green, setGreen] = useState(0);
-  const [blue, setBlue] = useState(0);
+  const redHex = color.slice(1,3)
+  const greenHex = color.slice(3,5)
+  const blueHex = color.slice(5,7)
+
+  const channels = {
+    red: redHex,
+    green: greenHex,
+    blue: blueHex,
+  }
 
   const currentHex = () => {
-    const redHex = red.toString(16).padStart(2, "0");
-    const greenHex = green.toString(16).padStart(2, "0");
-    const blueHex = blue.toString(16).padStart(2, "0");
-    const hexColor = `#${redHex}${greenHex}${blueHex}`;
+    return `#${channels.red}${channels.green}${channels.blue}`
+  }
 
-    return hexColor;
-  };
-
-  const colorChangeHandler = (setter) => (event) => {
-    const value = event.nativeEvent.target.value;
-    setter(parseInt(value));
+  const colorChangeHandler = (event) => {
+    const target = event.nativeEvent.target 
+    const value = target.value
+    const name = target.name
+    
+    const hex = parseInt(value).toString(16)
+    channels[name] = hex
     onChangeColor(currentHex())
   };
 
@@ -57,26 +62,26 @@ const ColorPicker = (props) => {
           style={{
             height: 100,
             width: 100,
-            backgroundColor: currentHex(),
+            backgroundColor: color,
           }}
         />
-        {currentHex()}
+        {color}
       </div>
       <div>
         <ChannelSlider
-          color="Red"
-          onChange={colorChangeHandler(setRed)}
-          value={red}
+          color="red"
+          onChange={colorChangeHandler}
+          value={parseInt(channels.red, 16)}
         />
         <ChannelSlider
-          color="Green"
-          onChange={colorChangeHandler(setGreen)}
-          value={green}
+          color="green"
+          onChange={colorChangeHandler}
+          value={parseInt(channels.green, 16)}
         />
         <ChannelSlider
-          color="Blue"
-          onChange={colorChangeHandler(setBlue)}
-          value={blue}
+          color="blue"
+          onChange={colorChangeHandler}
+          value={parseInt(channels.blue, 16)}
         />
       </div>
     </div>

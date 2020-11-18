@@ -4,7 +4,7 @@ import Palette from "../components/palette";
 import "./styles.scss";
 
 const Home = () => {
-  const initColors = ["#000000", "#ffffff", "#ffffff"];
+  const initColors = ["#bada55", "#ffffff", "#ffffff"];
   const [currentSwatch, setSwatch] = useState(0);
   const [colors, setColors] = useState(initColors);
 
@@ -13,14 +13,14 @@ const Home = () => {
   };
 
   const onChangeColor = (color) => {
-    const colorsDup = colors.map(x => x)
+    const colorsDup = colors.slice()
     colorsDup.splice(currentSwatch, 1, color)
     setColors(colorsDup)
   };
 
   return (
     <div style={{ padding: 20 }}>
-      <ColorPicker onChangeColor={onChangeColor} />
+      <ColorPicker onChangeColor={onChangeColor} color={colors[currentSwatch]} />
       <div style={{ display: "flex", flexDirection: "row" }}>
         {colors.map((color, index) => {
           return (
