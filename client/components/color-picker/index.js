@@ -31,6 +31,8 @@ const ChannelSlider = (props) => {
 const ColorPicker = (props) => {
   const { onChangeColor, color } = props;
 
+  if (!color) return null
+
   const redHex = color.slice(1,3)
   const greenHex = color.slice(3,5)
   const blueHex = color.slice(5,7)
@@ -40,19 +42,13 @@ const ColorPicker = (props) => {
     green: greenHex,
     blue: blueHex,
   }
-
-  const currentHex = () => {
-    return `#${channels.red}${channels.green}${channels.blue}`
-  }
-
+  
   const colorChangeHandler = (event) => {
-    const target = event.nativeEvent.target 
-    const value = target.value
-    const name = target.name
-    
-    const hex = parseInt(value).toString(16)
+    const {value, name} = event.nativeEvent.target 
+    const hex = parseInt(value).toString(16).padStart(2, '0')
     channels[name] = hex
-    onChangeColor(currentHex())
+
+    onChangeColor(`#${channels.red}${channels.green}${channels.blue}`)
   };
 
   return (
