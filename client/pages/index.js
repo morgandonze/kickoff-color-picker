@@ -4,7 +4,7 @@ import Palette from "../components/palette";
 import "./styles.scss";
 
 const Home = () => {
-  const initColors = ["#bada55", "#ffffff", "#ffffff"];
+  const initColors = ["#ba189d", "#6effff", "#ffff72"];
   const [currentSwatch, setSwatch] = useState(0);
   const [colors, setColors] = useState(initColors);
 
